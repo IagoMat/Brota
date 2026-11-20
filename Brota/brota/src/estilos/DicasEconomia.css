@@ -1,0 +1,369 @@
+.dicas-pagina {
+  display: flex;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: #f6f7fb;
+}
+
+.dicas-pagina > aside {
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+}
+
+.dicas,
+.dicas *,
+.dicas *::before,
+.dicas *::after {
+  box-sizing: border-box;
+}
+
+.dicas {
+  --dc-verde: #156b4c;
+  --dc-verde-suave: #eaf6ef;
+  --dc-texto: #1f1b3a;
+  --dc-suave: #757b91;
+  --dc-borda: #eceef5;
+  --dc-alta-bg: #fceff0;
+  --dc-alta-fg: #c2415a;
+  --dc-media-bg: #eaf6ef;
+  --dc-media-fg: #156b4c;
+  --dc-conquista-bg: #e6f4ec;
+  --dc-conquista-fg: #23805e;
+
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  padding: 32px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--dc-texto);
+  text-align: left;
+}
+
+.dicas button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.dicas h1,
+.dicas h2,
+.dicas p {
+  margin: 0;
+}
+
+/* ---------- Cabeçalho ---------- */
+.dicas__cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.dicas__titulo {
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--dc-texto);
+}
+
+.dicas__subtitulo {
+  margin-top: 7px;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--dc-suave);
+}
+
+.dicas__seletor-mes .seletor-mes {
+  width: 218px;
+}
+
+/* ---------- Resumo de economia ---------- */
+.dicas__resumo {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(32, 36, 61, 0.06);
+}
+
+.dicas__resumo-icone {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--dc-verde-suave);
+  color: var(--dc-verde);
+}
+
+.dicas__resumo-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dicas__resumo-qtd {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  color: var(--dc-texto);
+}
+
+.dicas__resumo-potencial {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--dc-suave);
+}
+
+.dicas__resumo-potencial strong {
+  color: var(--dc-verde);
+  font-weight: 600;
+}
+
+/* ---------- Filtros ---------- */
+.dicas__filtros {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dicas__filtro {
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--dc-suave);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.dicas__filtro:hover {
+  background: #ffffff;
+  color: var(--dc-texto);
+  border-color: var(--dc-borda);
+}
+
+.dicas__filtro--ativo {
+  background: var(--dc-verde);
+  color: #ffffff;
+  font-weight: 600;
+  border-color: var(--dc-verde);
+}
+
+.dicas__filtro--ativo:hover {
+  background: #0f5239;
+  color: #ffffff;
+  border-color: #0f5239;
+}
+
+/* ---------- Lista e cards ---------- */
+.dicas__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dicas__card {
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(32, 36, 61, 0.06);
+}
+
+.dicas__card-icone {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  margin-top: 2px;
+}
+
+.dicas__card-icone--alta {
+  background: var(--dc-alta-bg);
+  color: var(--dc-alta-fg);
+}
+
+.dicas__card-icone--media {
+  background: var(--dc-media-bg);
+  color: var(--dc-media-fg);
+}
+
+.dicas__card-icone--conquista {
+  background: var(--dc-conquista-bg);
+  color: var(--dc-conquista-fg);
+}
+
+.dicas__card-corpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.dicas__card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dicas__badge {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.dicas__badge--alta {
+  background: var(--dc-alta-bg);
+  color: var(--dc-alta-fg);
+}
+
+.dicas__badge--media {
+  background: var(--dc-media-bg);
+  color: var(--dc-media-fg);
+}
+
+.dicas__badge--conquista {
+  background: var(--dc-conquista-bg);
+  color: var(--dc-conquista-fg);
+}
+
+.dicas__card-categoria {
+  font-size: 12px;
+  color: var(--dc-suave);
+}
+
+.dicas__card-titulo {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 21px;
+  font-weight: 700;
+  color: var(--dc-texto);
+}
+
+.dicas__card-descricao {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 19px;
+  color: var(--dc-suave);
+}
+
+.dicas__card-acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.dicas__acao-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dc-verde);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.dicas__acao-link:hover {
+  background: var(--dc-verde-suave);
+}
+
+.dicas__dispensar {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dc-suave);
+  transition: background 0.2s, color 0.2s;
+}
+
+.dicas__dispensar:hover {
+  background: #f0f1f8;
+  color: var(--dc-texto);
+}
+
+/* ---------- Estado vazio e rodapé ---------- */
+.dicas__vazio {
+  padding: 36px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1.5px dashed #9fd4b6;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.dicas__vazio strong {
+  font-size: 15px;
+  color: var(--dc-texto);
+}
+
+.dicas__vazio p {
+  font-size: 13px;
+  color: var(--dc-suave);
+}
+
+.dicas__rodape {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--dc-suave);
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 900px) {
+  .dicas {
+    padding: 24px 20px 32px;
+  }
+
+  .dicas__cabecalho {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dicas__seletor-mes .seletor-mes {
+    width: 100%;
+  }
+
+  .dicas__card {
+    flex-direction: column;
+  }
+
+  .dicas__card-acoes {
+    width: 100%;
+    justify-content: space-between;
+    align-self: stretch;
+    padding-top: 8px;
+    border-top: 1px solid var(--dc-borda);
+  }
+}

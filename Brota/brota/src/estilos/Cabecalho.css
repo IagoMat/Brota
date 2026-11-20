@@ -1,0 +1,51 @@
+/* 84px de altura: logo 36 + gap 40 + bolinhas 8 */
+.marca-progresso {
+  width: 100%;
+  padding-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.marca-progresso__marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marca-progresso__simbolo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #156b4c;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.marca-progresso__nome {
+  font-family: "Inter", sans-serif;
+  font-size: 28px;
+  line-height: 33px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #20243d;
+}
+
+.marca-progresso__etapas {
+  display: flex;
+  gap: 12px;
+}
+
+.marca-progresso__etapa {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c4ead2;
+}
+
+.marca-progresso__etapa--atual {
+  background: #156b4c;
+}

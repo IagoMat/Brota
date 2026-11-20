@@ -1,0 +1,615 @@
+/* Tela de Dívidas.
+   Todas as classes começam com "dividas" ou "dv-" para não colidir com as outras telas. */
+
+.dividas-pagina {
+  display: flex;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: #f6f7fb;
+}
+
+.dividas-pagina > aside {
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+}
+
+.dividas {
+  --dv-verde: #156b4c;
+  --dv-verde-escuro: #0f5239;
+  --dv-verde-caixa: #eaf6ef;
+  --dv-texto: #20243d;
+  --dv-suave: #757b91;
+  --dv-borda: #eceef5;
+  --dv-trilho: #e8eaf3;
+
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  padding: 32px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--dv-texto);
+  text-align: left;
+}
+
+.dividas *,
+.dividas *::before,
+.dividas *::after {
+  box-sizing: border-box;
+}
+
+.dividas button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.dividas h1,
+.dividas h2,
+.dividas p {
+  margin: 0;
+}
+
+/* ---------- cabeçalho ---------- */
+.dividas__cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.dividas__titulo {
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--dv-texto);
+}
+
+.dividas__descricao {
+  margin-top: 7px;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--dv-suave);
+}
+
+.dividas__mes-seletor .seletor-mes {
+  width: 207px;
+}
+
+/* ---------- cards de resumo ---------- */
+.dividas__resumo {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.dividas__card-resumo {
+  height: 116px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(32, 36, 61, 0.06);
+}
+
+.dividas__rotulo {
+  display: block;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--dv-suave);
+}
+
+.dividas__numero {
+  display: block;
+  margin-top: 12px;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--dv-texto);
+}
+
+.dividas__numero--destaque {
+  color: var(--dv-verde);
+}
+
+.dividas__icone-resumo {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--dv-verde-caixa);
+  color: var(--dv-verde);
+}
+
+/* ---------- painéis ---------- */
+.dividas__painel {
+  padding: 24px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(32, 36, 61, 0.06);
+}
+
+.dividas__painel h2 {
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 500;
+  color: var(--dv-texto);
+}
+
+.dividas__painel-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dividas__botao {
+  height: 40px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 10px;
+  background: var(--dv-verde);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.dividas__botao:hover {
+  background: var(--dv-verde-escuro);
+}
+
+/* ---------- tabela ---------- */
+.dividas__tabela-scroll {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.dividas__tabela {
+  min-width: 860px;
+}
+
+.dividas__linha {
+  display: grid;
+  grid-template-columns: minmax(200px, 2.4fr) 1.3fr 1fr 1.1fr 1fr 1.3fr 168px;
+  align-items: center;
+  column-gap: 12px;
+  padding: 0 12px;
+}
+
+.dividas__linha--cabecalho {
+  height: 40px;
+  font-size: 12px;
+  color: var(--dv-suave);
+}
+
+.dividas__linha--item {
+  height: 62px;
+  border-top: 1px solid var(--dv-borda);
+  font-size: 14px;
+}
+
+.dividas__linha--quitada .dividas__celula,
+.dividas__linha--quitada .dividas__nome {
+  opacity: 0.55;
+}
+
+.dividas__nome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.dividas__nome strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dividas__nome small {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--dv-suave);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dividas__nome > div {
+  min-width: 0;
+}
+
+.dividas__icone-linha {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--dv-verde-caixa);
+  color: var(--dv-verde);
+}
+
+.dividas__celula {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* progresso */
+.dividas__progresso {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dividas__progresso span {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dv-verde);
+}
+
+.dividas__barra {
+  width: 100%;
+  max-width: 120px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--dv-trilho);
+  overflow: hidden;
+}
+
+.dividas__barra-cheia {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--dv-verde);
+  transition: width 0.4s ease;
+}
+
+/* ações da linha */
+.dividas__acoes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.dividas__pagar {
+  height: 30px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--dv-verde-caixa);
+  color: var(--dv-verde);
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.dividas__pagar:hover {
+  background: #d8efe5;
+}
+
+.dividas__icone-botao {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dv-suave);
+  transition: background 0.2s, color 0.2s;
+}
+
+.dividas__icone-botao:hover {
+  background: #f0f1f8;
+  color: var(--dv-texto);
+}
+
+.dividas__icone-botao--perigo:hover {
+  background: #fceff0;
+  color: #d16065;
+}
+
+/* estado vazio */
+.dividas__vazio {
+  margin-top: 20px;
+  padding: 36px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px dashed #9fd4b6;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.dividas__vazio .dividas__icone-linha {
+  margin-bottom: 6px;
+}
+
+.dividas__vazio strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dividas__vazio p {
+  font-size: 13px;
+  color: var(--dv-suave);
+}
+
+/* ---------- simulador ---------- */
+.dividas__simulador-grade {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 300px 276px minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.dividas__label {
+  display: block;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--dv-texto);
+}
+
+.dividas__label--pequeno {
+  font-size: 12px;
+  color: var(--dv-suave);
+}
+
+.dividas__simulador-form .dividas__label--pequeno {
+  margin-top: 14px;
+}
+
+.dividas__valor {
+  margin-top: 12px;
+  height: 44px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--dv-borda);
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.dividas__valor:focus-within {
+  border-color: var(--dv-verde);
+  box-shadow: 0 0 0 3px rgba(79, 82, 224, 0.12);
+}
+
+.dividas__valor span {
+  font-size: 15px;
+  color: var(--dv-suave);
+}
+
+.dividas__valor input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dv-texto);
+}
+
+.dividas__valor input::placeholder {
+  color: #c4c7d9;
+}
+
+.dividas__segmentos {
+  margin-top: 8px;
+  padding: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  border-radius: 12px;
+  background: #f1f2fa;
+}
+
+.dividas__segmento {
+  height: 36px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--dv-suave);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dividas__segmento--ativo {
+  background: #fff;
+  color: var(--dv-verde);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(32, 36, 61, 0.08);
+}
+
+/* resultado */
+.dividas__resultado {
+  min-height: 172px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: 16px;
+  background: #e6f4ee;
+}
+
+.dividas__resultado strong {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--dv-verde);
+}
+
+.dividas__resultado span {
+  font-size: 14px;
+  color: var(--dv-verde);
+}
+
+.dividas__resultado p {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--dv-suave);
+}
+
+.dividas__resultado--alerta {
+  background: #fff7e3;
+}
+
+.dividas__resultado--alerta strong,
+.dividas__resultado--alerta span {
+  color: #8e691d;
+}
+
+/* ---------- gráfico ---------- */
+.dividas__grafico-bloco {
+  min-width: 0;
+}
+
+.dividas__grafico-vazio {
+  margin-top: 12px;
+  height: 140px;
+  display: grid;
+  place-items: center;
+  padding: 0 16px;
+  border: 1.5px dashed #9fd4b6;
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--dv-suave);
+  text-align: center;
+}
+
+.dv-grafico {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr);
+  grid-template-rows: 100px auto;
+  column-gap: 0;
+}
+
+.dv-grafico__eixo-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 11px;
+  line-height: 12px;
+  color: var(--dv-suave);
+  transform: translateY(-6px);
+  height: calc(100% + 12px);
+}
+
+.dv-grafico__area {
+  position: relative;
+  border-left: 1.5px solid #3a3d5c;
+  border-bottom: 1.5px solid #3a3d5c;
+}
+
+.dv-grafico__area svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.dv-grafico__preenchimento {
+  fill: rgba(79, 82, 224, 0.12);
+}
+
+.dv-grafico__linha {
+  fill: none;
+  stroke: var(--dv-verde);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.dv-grafico__grade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--dv-borda);
+}
+
+.dv-grafico__grade--topo {
+  top: 0;
+}
+
+.dv-grafico__grade--meio {
+  top: 50%;
+}
+
+.dv-grafico__ponto {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dv-verde);
+  transform: translate(50%, 50%);
+}
+
+.dv-grafico__eixo-x {
+  grid-column: 2;
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--dv-suave);
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width: 1180px) {
+  .dividas__simulador-grade {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dividas__grafico-bloco {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .dividas {
+    padding: 24px 20px 32px;
+  }
+
+  .dividas__cabecalho {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dividas__mes-seletor .seletor-mes {
+    width: 100%;
+  }
+
+  .dividas__resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .dividas__simulador-grade {
+    grid-template-columns: 1fr;
+  }
+}
